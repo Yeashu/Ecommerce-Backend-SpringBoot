@@ -1,6 +1,8 @@
 package com.example.ecommerce.controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,4 +29,13 @@ public class PaymentController {
                 service.createPayment(req.getOrderId())
         );
     }
+    @GetMapping("/{paymentId}")
+    public ResponseEntity<Payment> getPayment(
+            @PathVariable String paymentId) {
+
+        return ResponseEntity.ok(
+                service.getPayment(paymentId)
+        );
+    }
+
 }

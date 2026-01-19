@@ -33,6 +33,10 @@ public class PaymentService {
         return paymentRepo.save(payment);
     }
 
+    public Payment getPayment(String paymentId){
+        return paymentRepo.findById(paymentId).orElseThrow(() -> new RuntimeException("Payment Not Found"));
+    }
+
     public void handleWebhook(String paymentId, String status) {
 
         Payment payment = paymentRepo.findById(paymentId)
